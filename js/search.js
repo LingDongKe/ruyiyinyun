@@ -48,7 +48,7 @@ class SearchResultsManager {
     performSearch(character) {
         if (!window.app || !window.app.data) {
             console.error('数据尚未加载完成');
-            this.showError('数据加载中，请稍后重试');
+            // 移除了错误弹窗，静默处理
             return;
         }
 
@@ -221,9 +221,8 @@ class SearchResultsManager {
             setTimeout(() => {
                 errorElement.classList.add('d-none');
             }, 3000);
-        } else {
-            alert(message);
         }
+        // 移除了alert弹窗
     }
 }
 
