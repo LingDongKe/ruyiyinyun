@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于 - 汝邑音韵</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">汝邑音韵</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="about.html">关于</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 内容区域 -->
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8 mx-auto">
+                                <h4 class="border-bottom pb-2 mb-3">汝城与汝城话</h4>
+                                <p>
+                                    汝城县位于湖南省东南部，东邻江西崇义，南接广东乐昌、仁化，西毗本省宜章，北连本省桂东、资兴，有"毗连三省，水注三江（湘江、珠江、赣江）"之美称。
+                                </p>
+                                <p>
+                                     汝城话，即以县政府驻地卢阳镇为代表的全县通行语言，其在语言分类上系属：岭东语汝桂片。本站记录的汝城话字音数据均由作者收集与整理。汝城境内方言比较复杂，当地人习惯把某个地方的方言称为某地话。虽然境内还有为数不少的瑶民，但这些瑶民已经不会说瑶语了，全部改说汉语。
+                                </p>
+
+                                <!-- 插入汝城方言分布图 -->
+                                <div class="text-center mt-4 mb-4">
+                                    <img src="static/images/汝城方言分布.jpg"
+                                         alt="汝城方言分布"
+                                         class="img-fluid rounded shadow"
+                                         style="max-height: 500px;">
+                                    <p class="text-muted mt-2">汝城方言分布简图</p>
+                                </div>
+
+                                <h4 class="border-bottom pb-2 mb-3">关于本站</h4>
+                                <p>
+                                    本站致力于收集、整理和保存汝城话的语音资料，为方言研究者和爱好者提供一个便捷的查询平台。
+                                </p>
+                                <p>
+                                    通过本站，您可以搜索汉字的汝城话发音，了解其音标和注释，点击音标即可播放对应的发音音频。
+                                </p>
+
+                                <div class="text-center mt-5">
+                                    <p class="text-muted">
+                                        若有意见与建议，欢迎联系作者
+                                        <span class="author-link text-primary fw-bold"
+                                              style="cursor: pointer; text-decoration: underline;"
+                                              onclick="showQRCode()">@岭东客</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 二维码模态框 -->
+    <div class="modal fade" id="qrCodeModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title">联系作者</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="static/images/author_qrcode.jpg"
+                         alt="作者联系方式二维码"
+                         class="img-fluid rounded mb-3"
+                         style="max-width: 250px;">
+                    <p class="text-muted small">扫描二维码联系作者</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p>&copy; 2024 汝邑音韵 - 汝城话发音词典</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+    .author-link {
+        transition: all 0.3s ease;
+    }
+
+    .author-link:hover {
+        color: #0a58ca !important;
+        transform: translateY(-1px);
+    }
+    </style>
+
+    <script>
+    function showQRCode() {
+        const modal = new bootstrap.Modal(document.getElementById('qrCodeModal'));
+        modal.show();
+    }
+    </script>
+</body>
+</html>

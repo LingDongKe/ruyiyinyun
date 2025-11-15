@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索结果 - 汝邑音韵</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">汝邑音韵</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">关于</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 内容区域 -->
+    <div class="container mt-4">
+        <!-- 搜索框 -->
+        <div class="row mb-4">
+            <div class="col-md-6 mx-auto">
+                <form id="searchForm">
+                    <div class="input-group">
+                        <input type="text" id="characterInput" class="form-control" placeholder="搜索汉字" required>
+                        <button class="btn btn-primary" type="submit">搜索</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- 搜索结果 -->
+        <div class="row">
+            <div class="col-12">
+                <div id="searchInfo" class="d-flex justify-content-between align-items-center mb-4" style="display: none !important;">
+                    <div class="text-muted">查询：<span class="text-primary fw-bold" id="searchCharacter"></span></div>
+                    <span class="badge bg-primary" id="resultCount">0 个</span>
+                </div>
+
+                <!-- 表格 - 保持现有宽度，列宽比例1:1:2 -->
+                <div id="resultsTable" class="card" style="max-width: 800px; margin: 0 auto; display: none;">
+                    <div class="card-body p-0">
+                        <table class="table mb-0" style="table-layout: fixed;">
+                            <thead class="table-light">
+                                <tr>
+                                    <th style="width: 25%">汉字</th>
+                                    <th style="width: 25%">音标</th>
+                                    <th style="width: 50%">注释</th>
+                                </tr>
+                            </thead>
+                            <tbody id="resultsBody">
+                                <!-- 结果将通过JavaScript动态生成 -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 无结果 -->
+                <div id="noResults" class="text-center py-5" style="display: none;">
+                    <p class="text-muted mb-4" id="noResultsText">未找到发音数据</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 音频播放器 -->
+    <audio id="audioPlayer" preload="none"></audio>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p>&copy; 2024 汝邑音韵 - 汝城话发音词典</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <style>
+    .table {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .table th {
+        font-weight: 500;
+        padding: 0.75rem;
+        border-bottom: 2px solid #dee2e6;
+        text-align: center;
+    }
+
+    .table td {
+        padding: 1rem;
+        border-color: #f1f3f4;
+        text-align: center;
+        word-wrap: break-word;
+    }
+
+    .phonetic-clickable {
+        cursor: pointer;
+        color: #0d6efd;
+        font-weight: 500;
+        padding: 4px 8px;
+        border-radius: 4px;
+        display: inline-flex;
+        align-items: center;
+        margin: 2px 0;
+        font-family: 'Arial Unicode MS', 'Lucida Sans Unicode', sans-serif;
+        transition: background-color 0.2s;
+    }
+
+    .phonetic-clickable:hover {
+        background-color: #f8f9fa;
+    }
+
+    .audio-icon {
+        margin-left: 4px;
+        opacity: 0.7;
+        font-size: 0.8em;
+    }
+
+    /* 移除表格行的悬停效果 */
+    .table-hover tbody tr:hover {
+        background-color: transparent;
+    }
+    </style>
+
+    <script>
+    // 全局播放音频函数
+    async function playAudio(phonetic) {
+        console.log('点击音标:', phonetic);
+
+        try {
+            // 检查音频文件是否存在
+            const audioExists = await window.app.checkAudioExists(phonetic);
+            console.log('检查结果:', audioExists);
+
+            if (audioExists.exists) {
+                const audioPlayer = document.getElementById('audioPlayer');
+                const audioUrl = `static/audio/${audioExists.filename}`;
+                console.log('音频URL:', audioUrl);
+
+                // 设置音频源并播放
+                audioPlayer.src = audioUrl;
+
+                // 使用Promise处理播放
+                const playPromise = audioPlayer.play();
+
+                if (playPromise !== undefined) {
+                    playPromise.then(_ => {
+                        console.log('音频开始播放');
+                    }).catch(error => {
+                        console.error('播放失败:', error);
+                    });
+                }
+
+            } else {
+                // 音频文件不存在，静默失败
+                console.log('音频文件不存在:', phonetic);
+            }
+        } catch (error) {
+            // 播放出错，静默失败
+            console.error('播放音频时出错:', error);
+        }
+    }
+
+    // 显示搜索结果
+    function displayResults(character, results) {
+        const searchInfo = document.getElementById('searchInfo');
+        const resultsTable = document.getElementById('resultsTable');
+        const noResults = document.getElementById('noResults');
+        const searchCharacter = document.getElementById('searchCharacter');
+        const resultCount = document.getElementById('resultCount');
+        const resultsBody = document.getElementById('resultsBody');
+        const noResultsText = document.getElementById('noResultsText');
+
+        // 更新搜索信息
+        searchCharacter.textContent = character;
+
+        if (Object.keys(results).length === 0) {
+            // 无结果
+            searchInfo.style.display = 'none';
+            resultsTable.style.display = 'none';
+            noResults.style.display = 'block';
+            noResultsText.textContent = `未找到"${character}"的发音数据`;
+        } else {
+            // 有结果
+            searchInfo.style.display = 'flex';
+            resultsTable.style.display = 'block';
+            noResults.style.display = 'none';
+            resultCount.textContent = `${Object.keys(results).length} 个`;
+
+            // 清空表格内容
+            resultsBody.innerHTML = '';
+
+            // 生成结果行
+            for (const [word, pronunciations] of Object.entries(results)) {
+                const pronunciationsArray = Array.isArray(pronunciations) ? pronunciations : [pronunciations];
+
+                pronunciationsArray.forEach((pron, index) => {
+                    const row = document.createElement('tr');
+
+                    // 第一行显示汉字（跨行）
+                    if (index === 0) {
+                        const charCell = document.createElement('td');
+                        charCell.className = 'align-middle';
+                        charCell.rowSpan = pronunciationsArray.length;
+                        charCell.innerHTML = `<div class="fs-3 fw-bold text-dark text-center">${word}</div>`;
+                        row.appendChild(charCell);
+                    }
+
+                    // 音标单元格
+                    const phoneticCell = document.createElement('td');
+                    phoneticCell.className = 'align-middle text-center';
+
+                    if (pron.phonetic) {
+                        const phonetics = pron.phonetic.split(',');
+                        phoneticCell.innerHTML = phonetics.map((ph, phIndex) => {
+                            const phoneticClean = ph.trim();
+                            return `
+                                <span class="phonetic-clickable"
+                                      data-phonetic="${phoneticClean}"
+                                      onclick="playAudio('${phoneticClean}')">
+                                    [${phoneticClean}]
+                                    <small class="audio-icon">🔊</small>
+                                </span>
+                                ${phIndex < phonetics.length - 1 ? '<br>' : ''}
+                            `;
+                        }).join('');
+                    } else if (pron.pronunciation) {
+                        const phoneticClean = pron.pronunciation.trim();
+                        phoneticCell.innerHTML = `
+                            <span class="phonetic-clickable"
+                                  data-phonetic="${phoneticClean}"
+                                  onclick="playAudio('${phoneticClean}')">
+                                [${phoneticClean}]
+                                <small class="audio-icon">🔊</small>
+                            </span>
+                        `;
+                    } else {
+                        phoneticCell.innerHTML = '<span class="text-muted">-</span>';
+                    }
+                    row.appendChild(phoneticCell);
+
+                    // 注释单元格
+                    const notesCell = document.createElement('td');
+                    notesCell.className = 'align-middle text-muted text-center';
+                    notesCell.textContent = pron.notes ? pron.notes : '-';
+                    row.appendChild(notesCell);
+
+                    resultsBody.appendChild(row);
+                });
+            }
+        }
+    }
+
+    // 页面加载完成后执行搜索
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('页面加载完成，初始化搜索结果页面');
+
+        // 设置搜索表单提交事件
+        document.getElementById('searchForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const characterInput = document.getElementById('characterInput');
+            const character = characterInput.value.trim();
+
+            if (!character) {
+                alert('请输入要搜索的汉字');
+                return;
+            }
+
+            // 执行搜索
+            performSearch(character);
+        });
+
+        // 从URL参数获取搜索词
+        const urlParams = new URLSearchParams(window.location.search);
+        const character = urlParams.get('character');
+
+        if (character) {
+            document.getElementById('characterInput').value = character;
+            performSearch(character);
+        }
+    });
+
+    // 执行搜索
+    function performSearch(character) {
+        if (!window.app || !window.app.data) {
+            console.error('数据尚未加载完成');
+            return;
+        }
+
+        const results = window.app.searchCharacters(character);
+        displayResults(character, results);
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+// 应用主要功能 - 静态版本
+class RuchengDialectApp {
+    constructor() {
+        this.data = null;
+        this.totalChars = 0;
+        this.init();
+    }
+
+    async init() {
+        await this.loadData();
+        this.setupEventListeners();
+        this.updateStats();
+    }
+
+    async loadData() {
+        try {
+            const response = await fetch('data/rucheng_data.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            this.data = await response.json();
+            this.totalChars = Object.keys(this.data).length;
+            console.log(`成功加载 ${this.totalChars} 个汉字的汝城话发音数据`);
+
+            // 设置全局引用，方便其他脚本访问
+            window.app = this;
+        } catch (error) {
+            console.error('加载数据失败:', error);
+            this.data = {};
+            this.totalChars = 0;
+
+            // 显示错误信息
+            this.showDataLoadError();
+        }
+    }
+
+    showDataLoadError() {
+        // 在页面上显示数据加载错误信息
+        const errorElement = document.getElementById('dataLoadError');
+        if (errorElement) {
+            errorElement.style.display = 'block';
+        } else {
+            // 如果没有预定义的元素，创建一个
+            const alertDiv = document.createElement('div');
+            alertDiv.className = 'alert alert-danger alert-dismissible fade show';
+            alertDiv.innerHTML = `
+                <strong>数据加载失败!</strong> 无法加载方言数据，请刷新页面重试。
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            `;
+            document.body.insertBefore(alertDiv, document.body.firstChild);
+        }
+    }
+
+    setupEventListeners() {
+        // 搜索表单事件监听
+        const searchForm = document.getElementById('searchForm');
+        if (searchForm) {
+            searchForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                this.handleSearch();
+            });
+        }
+
+        // 热门搜索链接事件（如果有的话）
+        document.querySelectorAll('.hot-search').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const character = e.target.textContent || e.target.innerText;
+                this.performSearch(character);
+            });
+        });
+    }
+
+    handleSearch() {
+        const input = document.getElementById('characterInput');
+        const character = input.value.trim();
+
+        if (!character) {
+            this.showError('请输入要搜索的汉字');
+            return;
+        }
+
+        // 跳转到搜索结果页面或执行搜索
+        if (window.location.pathname.includes('results.html')) {
+            // 如果在结果页面，直接执行搜索
+            this.performSearch(character);
+        } else {
+            // 跳转到搜索结果页面
+            window.location.href = `results.html?character=${encodeURIComponent(character)}`;
+        }
+    }
+
+    performSearch(character) {
+        if (!this.data) {
+            console.error('数据尚未加载完成');
+            this.showError('数据加载中，请稍后重试');
+            return {};
+        }
+
+        const results = this.searchCharacters(character);
+
+        // 如果当前在结果页面，显示结果
+        if (typeof displayResults === 'function') {
+            displayResults(character, results);
+        }
+
+        return results;
+    }
+
+    searchCharacters(characters) {
+        const results = {};
+        const searchChars = Array.from(characters);
+
+        for (const searchChar of searchChars) {
+            // 精确匹配
+            if (this.data && searchChar in this.data) {
+                results[searchChar] = this.data[searchChar];
+            }
+
+            // 包含匹配（词语）
+            if (this.data) {
+                for (const [word, pronunciations] of Object.entries(this.data)) {
+                    if (word.includes(searchChar) && word !== searchChar) {
+                        if (!(word in results)) {
+                            results[word] = pronunciations;
+                        }
+                    }
+                }
+            }
+        }
+
+        return results;
+    }
+
+    async checkAudioExists(phonetic) {
+        if (!phonetic) {
+            return { exists: false };
+        }
+
+        const audioExtensions = ['.mp3', '.wav', '.ogg', '.m4a'];
+
+        for (const ext of audioExtensions) {
+            const audioPath = `static/audio/${phonetic}${ext}`;
+            try {
+                const response = await fetch(audioPath, { method: 'HEAD' });
+                if (response.ok) {
+                    return { exists: true, filename: `${phonetic}${ext}` };
+                }
+            } catch (error) {
+                // 继续检查下一个扩展名
+                continue;
+            }
+        }
+
+        return { exists: false };
+    }
+
+    showError(message) {
+        // 在首页显示错误
+        const errorAlert = document.getElementById('errorAlert');
+        if (errorAlert) {
+            errorAlert.textContent = message;
+            errorAlert.classList.remove('d-none');
+
+            // 3秒后自动隐藏错误信息
+            setTimeout(() => {
+                errorAlert.classList.add('d-none');
+            }, 3000);
+        } else {
+            // 在其他页面使用alert
+            alert(message);
+        }
+    }
+
+    updateStats() {
+        const statsElement = document.getElementById('totalChars');
+        if (statsElement) {
+            statsElement.textContent = this.totalChars;
+        }
+    }
+
+    // API 搜索方法（保持与Flask版本兼容）
+    async apiSearch(character) {
+        const results = this.searchCharacters(character);
+        return {
+            'character': character,
+            'results': results,
+            'total_matches': Object.keys(results).length
+        };
+    }
+}
+
+// 数据转换功能（如果需要）
+class DataConverter {
+    static async convertExcelToJson() {
+        // 这里可以添加从Excel转换JSON的逻辑
+        // 由于浏览器环境限制，可能需要用户上传文件
+        console.log('数据转换功能需要在服务器端执行');
+    }
+}
+
+// 音频播放管理器
+class AudioManager {
+    constructor() {
+        this.audioPlayer = document.getElementById('audioPlayer') || this.createAudioPlayer();
+    }
+
+    createAudioPlayer() {
+        const audio = document.createElement('audio');
+        audio.id = 'audioPlayer';
+        audio.preload = 'none';
+        document.body.appendChild(audio);
+        return audio;
+    }
+
+    async playAudio(phonetic) {
+        console.log('播放音频:', phonetic);
+
+        try {
+            const audioExists = await window.app.checkAudioExists(phonetic);
+            console.log('音频检查结果:', audioExists);
+
+            if (audioExists.exists) {
+                const audioUrl = `static/audio/${audioExists.filename}`;
+                console.log('音频URL:', audioUrl);
+
+                // 设置音频源并播放
+                this.audioPlayer.src = audioUrl;
+
+                const playPromise = this.audioPlayer.play();
+
+                if (playPromise !== undefined) {
+                    playPromise.then(_ => {
+                        console.log('音频开始播放');
+                    }).catch(error => {
+                        console.error('播放失败:', error);
+                        this.showPlayError();
+                    });
+                }
+            } else {
+                console.log('音频文件不存在:', phonetic);
+                this.showFileNotFoundError();
+            }
+        } catch (error) {
+            console.error('播放音频时出错:', error);
+            this.showPlayError();
+        }
+    }
+
+    showPlayError() {
+        // 可以在这里添加播放错误的用户反馈
+        console.warn('音频播放失败');
+    }
+
+    showFileNotFoundError() {
+        // 可以在这里添加文件不存在的用户反馈
+        console.warn('音频文件不存在');
+    }
+}
+
+// 初始化应用
+document.addEventListener('DOMContentLoaded', function() {
+    window.app = new RuchengDialectApp();
+    window.audioManager = new AudioManager();
+
+    // 全局播放音频函数，供HTML中的onclick调用
+    window.playAudio = function(phonetic) {
+        window.audioManager.playAudio(phonetic);
+    };
+});
+
+// 导出供其他模块使用
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { RuchengDialectApp, AudioManager, DataConverter };
+}
