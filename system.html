@@ -36,6 +36,11 @@
             transform: translateY(-5px);
         }
 
+        .bracket-phonetic {
+            font-size: 0.85rem;  /* 单独设置方括号音标大小 */
+            font-family: "Arial Unicode MS", sans-serif;
+        }
+
         .phonetic-table {
             width: 100%;
             border-collapse: collapse;
@@ -173,34 +178,34 @@
                             <table class="phonetic-table">
                                 <tbody>
                                     <tr>
-                                        <td onclick="playSound('pu45')"><span class="ipa">p</span><br>婆<br>[pu45]</td>
-                                        <td onclick="playSound('pʰuəi33')"><span class="ipa">pʰ</span><br>被<br>[pʰuəi33]</td>
-                                        <td onclick="playSound('mua45')"><span class="ipa">m</span><br>蚊<br>[mua45]</td>
-                                        <td onclick="playSound('fuɛ21')"><span class="ipa">f</span><br>发<br>[fuɛ21]</td>
+                                        <td onclick="playSound('pu45')"><span class="ipa">p</span><br>婆<br><span class="bracket-phonetic">[pu45]</td>
+                                        <td onclick="playSound('pʰuəi33')"><span class="ipa">pʰ</span><br>被<br><span class="bracket-phonetic">[pʰuəi33]</td>
+                                        <td onclick="playSound('mua45')"><span class="ipa">m</span><br>蚊<br><span class="bracket-phonetic">[mua45]</td>
+                                        <td onclick="playSound('fuɛ21')"><span class="ipa">f</span><br>发<br><span class="bracket-phonetic">[fuɛ21]</td>
                                     </tr>
                                     <tr>
-                                        <td onclick="playSound('tiaŋ45')"><span class="ipa">t</span><br>长<br>[tiaŋ45]</td>
-                                        <td onclick="playSound('tʰuai33')"><span class="ipa">tʰ</span><br>梯<br>[tʰuai33]</td>
-                                        <td onclick="playSound('nuəŋ44')"><span class="ipa">n</span><br>嫩<br>[nuəŋ44]</td>
-                                        <td onclick="playSound('lua45')"><span class="ipa">l</span><br>恋<br>[lua45]</td>
+                                        <td onclick="playSound('tiaŋ45')"><span class="ipa">t</span><br>长<br><span class="bracket-phonetic">[tiaŋ45]</td>
+                                        <td onclick="playSound('tʰuai33')"><span class="ipa">tʰ</span><br>梯<br><span class="bracket-phonetic">[tʰuai33]</td>
+                                        <td onclick="playSound('nuəŋ44')"><span class="ipa">n</span><br>嫩<br><span class="bracket-phonetic">[nuəŋ44]</td>
+                                        <td onclick="playSound('lua45')"><span class="ipa">l</span><br>恋<br><span class="bracket-phonetic">[lua45]</td>
                                     </tr>
                                     <tr>
-                                        <td onclick="playSound('kɛi33')"><span class="ipa">k</span><br>鸡<br>[kɛi33]</td>
-                                        <td onclick="playSound('kʰu24')"><span class="ipa">kʰ</span><br>壳<br>[kʰu24]</td>
-                                        <td onclick="playSound('ŋɛi33')"><span class="ipa">ŋ</span><br>我<br>[ŋɛi33]</td>
-                                        <td onclick="playSound('xu24')"><span class="ipa">x</span><br>哭<br>[xu24]</td>
+                                        <td onclick="playSound('kɛi33')"><span class="ipa">k</span><br>鸡<br><span class="bracket-phonetic">[kɛi33]</td>
+                                        <td onclick="playSound('kʰu24')"><span class="ipa">kʰ</span><br>壳<br><span class="bracket-phonetic">[kʰu24]</td>
+                                        <td onclick="playSound('ŋɛi33')"><span class="ipa">ŋ</span><br>我<br><span class="bracket-phonetic">[ŋɛi33]</td>
+                                        <td onclick="playSound('xu24')"><span class="ipa">x</span><br>哭<br><span class="bracket-phonetic">[xu24]</td>
                                     </tr>
                                     <tr>
-                                        <td onclick="playSound('tɕiəu24')"><span class="ipa">tɕ</span><br>菊<br>[tɕiəu24]</td>
-                                        <td onclick="playSound('tɕʰia45')"><span class="ipa">tɕʰ</span><br>钱<br>[tɕʰia45]</td>
-                                        <td onclick="playSound('ȵyɛ33')"><span class="ipa">ȵ</span><br>月<br>[ȵyɛ33]</td>
-                                        <td onclick="playSound('ɕioŋ21')"><span class="ipa">ɕ</span><br>恐<br>[ɕioŋ21]</td>
+                                        <td onclick="playSound('tɕiəu24')"><span class="ipa">tɕ</span><br>菊<br><span class="bracket-phonetic">[tɕiəu24]</td>
+                                        <td onclick="playSound('tɕʰia45')"><span class="ipa">tɕʰ</span><br>钱<br><span class="bracket-phonetic">[tɕʰia45]</td>
+                                        <td onclick="playSound('ȵyɛ33')"><span class="ipa">ȵ</span><br>月<br><span class="bracket-phonetic">[ȵyɛ33]</td>
+                                        <td onclick="playSound('ɕioŋ21')"><span class="ipa">ɕ</span><br>恐<br><span class="bracket-phonetic">[ɕioŋ21]</td>
                                     </tr>
                                     <tr>
-                                        <td onclick="playSound('tso24')"><span class="ipa">ts</span><br>炸<br>[tso24]</td>
-                                        <td onclick="playSound('tsʰu44')"><span class="ipa">tsʰ</span><br>昨<br>[tsʰu44]</td>
-                                        <td onclick="playSound('ɛu33')"><span class="ipa">∅</span><br>欧<br>[ɛu33]</td>
-                                        <td onclick="playSound('sua45')"><span class="ipa">s</span><br>船<br>[sua45]</td>
+                                        <td onclick="playSound('tso24')"><span class="ipa">ts</span><br>炸<br><span class="bracket-phonetic">[tso24]</td>
+                                        <td onclick="playSound('tsʰu44')"><span class="ipa">tsʰ</span><br>昨<br><span class="bracket-phonetic">[tsʰu44]</td>
+                                        <td onclick="playSound('ɛu33')"><span class="ipa">∅</span><br>欧<br><span class="bracket-phonetic">[ɛu33]</td>
+                                        <td onclick="playSound('sua45')"><span class="ipa">s</span><br>船<br><span class="bracket-phonetic">[sua45]</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -219,70 +224,70 @@
                             <table class="phonetic-table">
                                 <tbody>
                                     <tr>
-                                        <td onclick="playSound('sɿ24')"><span class="ipa">ɿ</span><br>去<br>[sɿ24]</td>
-                                        <td onclick="playSound('tɕʰi44')"><span class="ipa">i</span><br>自<br>[tɕʰi44]</td>
-                                        <td onclick="playSound('u45')"><span class="ipa">u</span><br>禾<br>[u45]</td>
-                                        <td onclick="playSound('y33')"><span class="ipa">y</span><br>猪<br>[y33]</td>
+                                        <td onclick="playSound('sɿ24')"><span class="ipa">ɿ</span><br>去<br><span class="bracket-phonetic">[sɿ24]</td>
+                                        <td onclick="playSound('tɕʰi44')"><span class="ipa">i</span><br>自<br><span class="bracket-phonetic">[tɕʰi44]</td>
+                                        <td onclick="playSound('u45')"><span class="ipa">u</span><br>禾<br><span class="bracket-phonetic">[u45]</td>
+                                        <td onclick="playSound('y33')"><span class="ipa">y</span><br>猪<br><span class="bracket-phonetic">[y33]</td>
                                     </tr>
                                     <tr>
-                                        <td onclick="playSound('sa33')"><span class="ipa">a</span><br>三<br>[sa33]</td>
-                                        <td onclick="playSound('ia˦˨')"><span class="ipa">ia</span><br>宴<br>[ia24]</td>
-                                        <td onclick="playSound('xua44')"><span class="ipa">ua</span><br>换<br>[xua44]</td>
-                                        <td onclick="playSound('ɕya21')"><span class="ipa">ya</span><br>选<br>[ɕya21]</td>
+                                        <td onclick="playSound('sa33')"><span class="ipa">a</span><br>三<br><span class="bracket-phonetic">[sa33]</td>
+                                        <td onclick="playSound('ia˦˨')"><span class="ipa">ia</span><br>宴<br><span class="bracket-phonetic">[ia24]</td>
+                                        <td onclick="playSound('xua44')"><span class="ipa">ua</span><br>换<br><span class="bracket-phonetic">[xua44]</td>
+                                        <td onclick="playSound('ɕya21')"><span class="ipa">ya</span><br>选<br><span class="bracket-phonetic">[ɕya21]</td>
                                     </tr>
                                     <tr>
-                                        <td onclick="playSound('sɛ33')"><span class="ipa">ɛ</span><br>十<br>[sɛ33]</td>
-                                        <td onclick="playSound('piɛ21')"><span class="ipa">iɛ</span><br>笔<br>[piɛ21]</td>
-                                        <td onclick="playSound('xuɛ33')"><span class="ipa">uɛ</span><br>活<br>[xuɛ33]</td>
-                                        <td onclick="playSound('tɕʰyɛ21')"><span class="ipa">yɛ</span><br>出<br>[tɕʰyɛ21]</td>
+                                        <td onclick="playSound('sɛ33')"><span class="ipa">ɛ</span><br>十<br><span class="bracket-phonetic">[sɛ33]</td>
+                                        <td onclick="playSound('piɛ21')"><span class="ipa">iɛ</span><br>笔<br><span class="bracket-phonetic">[piɛ21]</td>
+                                        <td onclick="playSound('xuɛ33')"><span class="ipa">uɛ</span><br>活<br><span class="bracket-phonetic">[xuɛ33]</td>
+                                        <td onclick="playSound('tɕʰyɛ21')"><span class="ipa">yɛ</span><br>出<br><span class="bracket-phonetic">[tɕʰyɛ21]</td>
                                     </tr>
                                     <tr>
-                                        <td onclick="playSound('kau33')"><span class="ipa">au</span><br>交<br>[kau33]</td>
-                                        <td onclick="playSound('miau24')"><span class="ipa">iau</span><br>猫<br>[miau24]</td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td onclick="playSound('xɛu33')"><span class="ipa">ɛu</span><br>厚<br>[xɛu33]</td>
-                                        <td onclick="playSound('iəu24')"><span class="ipa">iəu</span><br>竹<br>[iəu24]</td>
+                                        <td onclick="playSound('kau33')"><span class="ipa">au</span><br>交<br><span class="bracket-phonetic">[kau33]</td>
+                                        <td onclick="playSound('miau24')"><span class="ipa">iau</span><br>猫<br><span class="bracket-phonetic">[miau24]</td>
                                         <td></td>
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td onclick="playSound('kai33')"><span class="ipa">ai</span><br>街<br>[kai33]</td>
-                                        <td></td>
-                                        <td onclick="playSound('tuai44')"><span class="ipa">uai</span><br>代<br>[tuai44]</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td onclick="playSound('tsʰɛi45')"><span class="ipa">ɛi</span><br>齐<br>[tsʰɛi45]</td>
-                                        <td></td>
-                                        <td onclick="playSound('muəi24')"><span class="ipa">uəi</span><br>妹<br>[muəi24]</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td onclick="playSound('so33')"><span class="ipa">o</span><br>沙<br>[so33]</td>
-                                        <td onclick="playSound('tɕio24')"><span class="ipa">io</span><br>借<br>[tɕio24]</td>
+                                        <td onclick="playSound('xɛu33')"><span class="ipa">ɛu</span><br>厚<br><span class="bracket-phonetic">[xɛu33]</td>
+                                        <td onclick="playSound('iəu24')"><span class="ipa">iəu</span><br>竹<br><span class="bracket-phonetic">[iəu24]</td>
                                         <td></td>
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td onclick="playSound('pʰoŋ33')"><span class="ipa">oŋ</span><br>蜂<br>[pʰoŋ33]</td>
-                                        <td onclick="playSound('tʰioŋ33')"><span class="ipa">ioŋ</span><br>重<br>[tʰioŋ33]</td>
+                                        <td onclick="playSound('kai33')"><span class="ipa">ai</span><br>街<br><span class="bracket-phonetic">[kai33]</td>
+                                        <td></td>
+                                        <td onclick="playSound('tuai44')"><span class="ipa">uai</span><br>代<br><span class="bracket-phonetic">[tuai44]</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td onclick="playSound('tsʰɛi45')"><span class="ipa">ɛi</span><br>齐<br><span class="bracket-phonetic">[tsʰɛi45]</td>
+                                        <td></td>
+                                        <td onclick="playSound('muəi24')"><span class="ipa">uəi</span><br>妹<br><span class="bracket-phonetic">[muəi24]</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td onclick="playSound('so33')"><span class="ipa">o</span><br>沙<br><span class="bracket-phonetic">[so33]</td>
+                                        <td onclick="playSound('tɕio24')"><span class="ipa">io</span><br>借<br><span class="bracket-phonetic">[tɕio24]</td>
                                         <td></td>
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td onclick="playSound('tsʰaŋ21')"><span class="ipa">aŋ</span><br>窗<br>[tsʰaŋ21]</td>
-                                        <td onclick="playSound('tɕiaŋ33')"><span class="ipa">iaŋ</span><br>姜<br>[tɕiaŋ33]</td>
-                                        <td onclick="playSound('uaŋ45')"><span class="ipa">uaŋ</span><br>黄<br>[uaŋ45]</td>
-                                        <td onclick="playSound('ŋ33')"><span class="ipa">ŋ</span><br>你<br>[ŋ33]</td>
+                                        <td onclick="playSound('pʰoŋ33')"><span class="ipa">oŋ</span><br>蜂<br><span class="bracket-phonetic">[pʰoŋ33]</td>
+                                        <td onclick="playSound('tʰioŋ33')"><span class="ipa">ioŋ</span><br>重<br><span class="bracket-phonetic">[tʰioŋ33]</td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
                                     <tr>
-                                        <td onclick="playSound('tsɛŋ33')"><span class="ipa">ɛŋ</span><br>针<br>[tsɛŋ33]</td>
-                                        <td onclick="playSound('iŋ21')"><span class="ipa">iŋ</span><br>饮<br>[iŋ21]</td>
-                                        <td onclick="playSound('suəŋ44')"><span class="ipa">uəŋ</span><br>顺<br>[suəŋ44]</td>
-                                        <td onclick="playSound('yŋ45')"><span class="ipa">yŋ</span><br>云<br>[yŋ45]</td>
+                                        <td onclick="playSound('tsʰaŋ21')"><span class="ipa">aŋ</span><br>窗<br><span class="bracket-phonetic">[tsʰaŋ21]</td>
+                                        <td onclick="playSound('tɕiaŋ33')"><span class="ipa">iaŋ</span><br>姜<br><span class="bracket-phonetic">[tɕiaŋ33]</td>
+                                        <td onclick="playSound('uaŋ45')"><span class="ipa">uaŋ</span><br>黄<br><span class="bracket-phonetic">[uaŋ45]</td>
+                                        <td onclick="playSound('ŋ33')"><span class="ipa">ŋ</span><br>你<br><span class="bracket-phonetic">[ŋ33]</td>
+                                    </tr>
+                                    <tr>
+                                        <td onclick="playSound('tsɛŋ33')"><span class="ipa">ɛŋ</span><br>针<br><span class="bracket-phonetic">[tsɛŋ33]</td>
+                                        <td onclick="playSound('iŋ21')"><span class="ipa">iŋ</span><br>饮<br><span class="bracket-phonetic">[iŋ21]</td>
+                                        <td onclick="playSound('suəŋ44')"><span class="ipa">uəŋ</span><br>顺<br><span class="bracket-phonetic">[suəŋ44]</td>
+                                        <td onclick="playSound('yŋ45')"><span class="ipa">yŋ</span><br>云<br><span class="bracket-phonetic">[yŋ45]</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -357,4 +362,3 @@
     </script>
 </body>
 </html>
-
