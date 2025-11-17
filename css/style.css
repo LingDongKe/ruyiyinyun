@@ -106,6 +106,13 @@ body {
     border-bottom: 2px solid #fff;
 }
 
+/* 顶部区域背景样式 */
+.hero-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
 /* 重置选项卡样式，覆盖外部 CSS */
 #phoneticTabs.nav-tabs .nav-link {
     all: unset;
@@ -129,3 +136,4 @@ body {
     color: var(--primary-color) !important;
     background: none !important;
 }
+
