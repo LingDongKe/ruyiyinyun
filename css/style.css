@@ -85,7 +85,7 @@ body {
 /* 响应式调整 */
 @media (max-width: 768px) {
     .navbar-nav .nav-link {
-        margin: 0 0.5rem;
+        margin: 0 0.4rem;
     }
 
     .search-container {
@@ -137,6 +137,7 @@ body {
     color: var(--primary-color) !important;
     background: none !important;
 }
+
 
 
 
