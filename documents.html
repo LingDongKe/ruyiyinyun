@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资料 - 汝邑音韵</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .document-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            margin-bottom: 1.5rem;
+        }
+
+        .document-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .document-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .document-item {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .document-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .document-item:last-child {
+            border-bottom: none;
+        }
+
+        .document-name {
+            flex-grow: 1;
+            cursor: pointer;
+            transition: color 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: center;
+        }
+
+        .document-name:hover {
+            color: var(--primary-color);
+        }
+
+        .file-icon {
+            margin-right: 10px;
+            width: 24px;
+            text-align: center;
+        }
+
+        .document-info {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .file-type-badge {
+            background-color: #e9ecef;
+            color: #495057;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            margin-right: 10px;
+        }
+
+        .download-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .download-link:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- 内容区域 -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="card document-card">
+                    <div class="card-body">
+                        <h2 class="card-title mb-4">资料</h2>
+                        <p class="text-muted mb-4">点击文件名即可下载（事实上这只是个文件目录，因为我还没有上传文件，需要文件的话可以联系我）</p>
+
+                        <ul class="document-list">
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-pdf text-danger"></i>
+                                    <a href="static/files/《汝城话的子尾》陈明玉、李梦龙1992.pdf" class="document-name download-link" download>
+                                        《汝城话的子尾》陈明玉、李梦龙1992
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-pdf text-danger"></i>
+                                    <a href="static/files/《试论湖南汝城话的归属》陈立中2002.pdf" class="document-name download-link" download>
+                                        《试论湖南汝城话的归属》陈立中2002
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-pdf text-danger"></i>
+                                    <a href="static/files/《汝城话的音韵特点》曾献飞2002.pdf" class="document-name download-link" download>
+                                        《汝城话的音韵特点》曾献飞2002
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-pdf text-danger"></i>
+                                    <a href="static/files/《谈汝城话》林双萍2005.pdf" class="document-name download-link" download>
+                                        《谈汝城话》林双萍2005
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-pdf text-danger"></i>
+                                    <a href="static/files/《汝城方言研究》曾献飞2006.pdf" class="document-name download-link" download>
+                                        《汝城方言研究》曾献飞2006
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-pdf text-danger"></i>
+                                    <a href="static/files/《论湖南汝城话的“拿”》陈立中、朱涛2007.pdf" class="document-name download-link" download>
+                                        《论湖南汝城话的“拿”》陈立中、朱涛2007
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-pdf text-danger"></i>
+                                    <a href="static/files/《汝城话中表方位的后缀“/naŋ44/”》陈立中、朱涛2007.pdf" class="document-name download-link" download>
+                                        《汝城话中表方位的后缀“/naŋ44/”》陈立中、朱涛2007
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-pdf text-danger"></i>
+                                    <a href="static/files/《汝城话小名中的后加成分》朱涛、陈立中2007.pdf" class="document-name download-link" download>
+                                        《汝城话小名中的后加成分》朱涛、陈立中2007
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-pdf text-danger"></i>
+                                    <a href="static/files/《湖南汝城延寿话语音研究》谭盛祥2008.pdf" class="document-name download-link" download>
+                                        《湖南汝城延寿话语音研究》谭盛祥2008
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-pdf text-danger"></i>
+                                    <a href="static/files/《湖南汝城话的体貌标记》朱涛2008.pdf" class="document-name download-link" download>
+                                        《湖南汝城话的体貌标记》朱涛2008
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-pdf text-danger"></i>
+                                    <a href="static/files/《汝城方言的人称代词》曾献飞2008.pdf" class="document-name download-link" download>
+                                        《汝城方言的人称代词》曾献飞2008
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-pdf text-danger"></i>
+                                    <a href="static/files/《湖南汝城话的体貌系统》刘玉婷2009.pdf" class="document-name download-link" download>
+                                        《湖南汝城话的体貌系统》刘玉婷2009
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-pdf text-danger"></i>
+                                    <a href="static/files/《湖南汝城方言“咁”字浅说》袁利盛2009.pdf" class="document-name download-link" download>
+                                        《湖南汝城方言“咁”字浅说》袁利盛2009
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-pdf text-danger"></i>
+                                    <a href="static/files/《汝城方言语气词研究》何旭文2010.pdf" class="document-name download-link" download>
+                                        《汝城方言语气词研究》何旭文2010
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-pdf text-danger"></i>
+                                    <a href="static/files/《湖南汝城话的变化貌标记“适喥”》朱涛2012.pdf" class="document-name download-link" download>
+                                        《湖南汝城话的变化貌标记“适喥”》朱涛2012
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-pdf text-danger"></i>
+                                    <a href="static/files/《湖南汝城话的动态助词“翻”》朱涛2012.pdf" class="document-name download-link" download>
+                                        《湖南汝城话的动态助词“翻”》朱涛2012
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-pdf text-danger"></i>
+                                    <a href="static/files/《古南越国与湖南汝城方言的形成》袁利盛2012.pdf" class="document-name download-link" download>
+                                        《古南越国与湖南汝城方言的形成》袁利盛2012
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-pdf text-danger"></i>
+                                    <a href="static/files/《从湖南汝城话“/tε1/”谈方言先行体 》朱涛2013.pdf" class="document-name download-link" download>
+                                        《从湖南汝城话“/tε1/”谈方言先行体 》朱涛2013
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-pdf text-danger"></i>
+                                    <a href="static/files/《湖南汝城话语音研究》邓慧玲2015.pdf" class="document-name download-link" download>
+                                        《湖南汝城话语音研究》邓慧玲2015
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-pdf text-danger"></i>
+                                    <a href="static/files/《古百越语在汝城方言中的留存》袁利盛2019.pdf" class="document-name download-link" download>
+                                        《古百越语在汝城方言中的留存》袁利盛2019
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-pdf text-danger"></i>
+                                    <a href="static/files/《试论晋后移民对湖南汝城方言的影响》袁利盛2020.pdf" class="document-name download-link" download>
+                                        《试论晋后移民对湖南汝城方言的影响》袁利盛2020
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-pdf text-danger"></i>
+                                    <a href="static/files/《湖南汝城话语音格局及代际变异研究》李金儒2024.pdf" class="document-name download-link" download>
+                                        《湖南汝城话语音格局及代际变异研究》李金儒2024
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-pdf text-danger"></i>
+                                    <a href="static/files/《客家方言汝城话通摄三等见组字声母变异研究》李金儒2024.pdf" class="document-name download-link" download>
+                                        《客家方言汝城话通摄三等见组字声母变异研究》李金儒2024
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-pdf text-danger"></i>
+                                    <a href="static/files/《湖南汝城话古知组三等今读的特殊类型》李莉亚2025.pdf" class="document-name download-link" download>
+                                        《湖南汝城话古知组三等今读的特殊类型》李莉亚2025
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-word text-primary"></i>
+                                    <a href="static/files/《试论湖南汝城话的归属》陈立中2002.docx" class="document-name download-link" download>
+                                        无
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-excel text-success"></i>
+                                    <a href="static/files/声调对比研究.xlsx" class="document-name download-link" download>
+                                        无
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-alt text-secondary"></i>
+                                    <a href="static/files/方言词汇收集.txt" class="document-name download-link" download>
+                                        无
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-folder text-warning"></i>
+                                    <a href="static/files/语音样本录音集.zip" class="document-name download-link" download>
+                                        无
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-pdf text-danger"></i>
+                                    <a href="static/files/田野调查笔记2023.pdf" class="document-name download-link" download>
+                                        无
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-archive text-warning"></i>
+                                    <a href="static/files/方言地图制作数据.zip" class="document-name download-link" download>
+                                        无
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="document-item">
+                                <div class="document-info">
+                                    <i class="file-icon fas fa-file-powerpoint text-warning"></i>
+                                    <a href="static/files/音系对比分析.pptx" class="document-name download-link" download>
+                                        无
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
